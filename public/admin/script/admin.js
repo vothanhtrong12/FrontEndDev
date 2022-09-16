@@ -9,7 +9,76 @@ $(document).ready(function () {
 });
 function UserRole(){
     $('#addUserRolebtn').click(function (e) {
+        var newUsRole = $("#newUserRole").val().trim();
+        if(newUsRole!=''){
+            $.ajax({
+                url: 'http://127.0.0.1:3000/api/addUserRole',
+                type: "POST",
+                data: {
+                    newUsRole: newUsRole,
+                },
+                success: function (response) {
+                    if(response.check==401){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                          })
 
+                          Toast.fire({
+                            icon: 'error',
+                            title: response.message
+                          }).then(()=>{
+                            window.location.reload();
+                          })
+                    }else if(response.check==400){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                          })
+
+                          Toast.fire({
+                            icon: 'error',
+                            title: 'Đã tồn tại loại tài khoản !'
+                          }).then(()=>{
+                            window.location.reload();
+                          })
+                    }else if(response.check==200){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                          })
+
+                          Toast.fire({
+                            icon: 'success',
+                            title: 'Thêm mới thành công'
+                          }).then(()=>{
+                            window.location.reload();
+                          })
+                    }
+                }
+            })
+        }
 })
 
 }
