@@ -705,10 +705,10 @@
 		<script src="admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+		<script src="admin/src/scripts/jquery.min.js"></script>
 		<script src="admin/script/jquery-3.6.1.min.js"></script>
-		{{-- <script src="admin/script/jquery-3.6.1.min.js"></script> --}}
 		<script src="admin/script/admin.js"></script>
 		<script src="admin/script/sweetalert2.js"></script>
-        {{-- <script src="admin/vendors/scripts/datatable-setting.js"></script> --}}
+        <script src="admin/vendors/scripts/datatable-setting.js"></script>
 	</body>
 </html>

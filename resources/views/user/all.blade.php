@@ -33,6 +33,11 @@
         </div>
         <div class="modal-body">
           <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Thêm loại tài khoản</button>
+          <div class="mt-3">
+            <table>
+
+            </table>
+          </div>
         </div>
         <div class="modal-footer">
         </div>
