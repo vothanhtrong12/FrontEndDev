@@ -24,8 +24,10 @@ class UserController extends Controller
     public function allUser()
     {
         $response = Http::get('http://127.0.0.1:3000/api/allUser');
+        $userRoles = Http::get('http://127.0.0.1:3000/api/allUserRole');
         $users= json_decode($response);
-        return view('user.all',compact('users'));
+        $userRoles= json_decode($userRoles);
+        return view('user.all',compact('users','userRoles'));
     }
 
     /**

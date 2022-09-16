@@ -34,9 +34,22 @@
         <div class="modal-body">
           <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Thêm loại tài khoản</button>
           <div class="mt-3">
-            <table>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                    <div class="pd-20 card-box height-100-p w-100">
+                        <div class="list-group">
+                            @foreach ($userRoles as $item)
+                            <a
+                            href="#"
+                            class="list-group-item list-group-item-action"
+                            >{{$item->name}}</a>
+                            <br>
+                            @endforeach
 
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
