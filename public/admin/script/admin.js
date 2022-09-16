@@ -5,8 +5,14 @@ $(document).ready(function () {
         }
     });
     addUser();
+    UserRole();
 });
+function UserRole(){
+    $('#addUserRolebtn').click(function (e) {
 
+})
+
+}
 function addUser(){
     $( "#username" ).keyup(function() {
         var email=$("#email").val().trim();

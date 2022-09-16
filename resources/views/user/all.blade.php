@@ -1,24 +1,90 @@
 @extends('layout.layout1')
+@section('title','Quản lý tài khoản')
 @section('main-container')
+<div class="min-height-200px">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="title">
+                    <h4>Quản lý nhân viên</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <li><button class="btn btn-primary" data-toggle="modal" data-target="#userManager">Loại tài khoản</button></li>
+                    </ol>
+                </nav>
+            </div>
+            {{-- <div class="col-md-6 col-sm-12 text-right">
+
+            </div> --}}
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="userManager" tabindex="-1" aria-labelledby="userManagerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userManagerLabel">Quản lý loại tài khoản</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Thêm loại tài khoản</button>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- Modal2  --}}
+  <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm loại tài khoản</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control" id="newUserRole" placeholder="Loại tài khoản mới">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="addUserRolebtn" class="btn btn-primary">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- End MD2 --}}
     <div class="">
         <table class="data-table table stripe hover nowrap">
             <thead>
                 <tr>
-                    <th class="table-plus datatable-nosort">Name</th>
-                    <th>Age</th>
-                    <th>Office</th>
-                    <th>Address</th>
-                    <th>Start Date</th>
+                    <th class="table-plus datatable-nosort">Username</th>
+                    <th>Role</th>
+                    <th>Tình trạng tài khoản</th>
+                    <th>Hình ảnh</th>
+                    <th>Ngày tạo</th>
                     <th class="datatable-nosort">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $item)
                 <tr>
-                    <td class="table-plus">Gloria F. Mead</td>
-                    <td>25</td>
-                    <td>Sagittarius</td>
-                    <td>2829 Trainer Avenue Peoria, IL 61602</td>
-                    <td>29-03-2018</td>
+                    <td class="table-plus"><p>{{$item->username}}</p></td>
+                    <td></td>
+                    <td><?php if($item->status==0){?>
+                        <p>Đang khóa</p>
+                    <?php }else{ ?>
+                        <p>Đang hoạt động</p>
+                    <?php } ?></td>
+                    <td><?php if($item->image==null||$item->image==''){
+                        echo "<p>Chưa cập nhật</p>";
+                    }?></td>
+                    <td><p><?php echo date('H:i d/m/yy',strtotime($item->created_at))?></p></td>
                     <td>
                         <div class="dropdown">
                             <a
@@ -45,8 +111,8 @@
                         </div>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
-</div>
 @endsection
